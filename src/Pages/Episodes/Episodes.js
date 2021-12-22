@@ -25,6 +25,19 @@ const Episodes = () => {
         dispatch(getEpisodes())
     }, [])
 
+    const setBackgroundColor = (season) => {
+
+        switch (season) {
+            case 1:
+                return 'white'
+            case 2:
+                return 'red'
+
+            default:
+                break;
+        }
+    }
+
     return (
         <div className='container animated fadeIn episodesContainer'>
             <h1 className='text-center'>List of Episodes</h1>
@@ -80,9 +93,19 @@ const Episodes = () => {
                                 return <MDBCard key={episode.episode_id} className='col-sm-3 cardOfEisode'>
                                     <Link to={`episode/${episode.episode_id}`}><h2>{episode.title}</h2></Link>
                                     <p>{new Date(episode.air_date).toLocaleDateString('he-IL', { timeZone: 'Asia/Jerusalem' }).replace(/\D/g, '/')}</p>
-                                    <div className='season'>
-                                        <span>season {episode.season}</span>
+
+                                    <div className='season'
+                                        style={{
+                                            background:
+                                                episode.season == 1 ? 'rgb(140 111 111)'
+                                                    : episode.season == 2 ? 'rgb(54, 32, 32)'
+                                                        : episode.season == 3 ? 'rgb(53 50 116)'
+                                                            : episode.season == 4 ? 'rgb(220 60 60)'
+                                                                : ''
+                                        }}>
+                                        <span >season {episode.season}</span>
                                     </div>
+
                                 </MDBCard>
                             })
                         : <Spinner />
