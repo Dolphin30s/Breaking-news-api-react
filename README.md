@@ -4,8 +4,6 @@
 A simple React app that returns the episodes of The Breaking Bad playlists from API source:
 
 - **The Breaking Bad API**
-- 
-![sptify](https://user-images.githubusercontent.com/33829557/144406073-f9636014-1e43-4f02-8851-ad3cc821791d.gif)
 
 ## Getting started
 
