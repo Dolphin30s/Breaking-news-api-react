@@ -1,5 +1,4 @@
 # The Breaking Bad
-##  [Live Demo](https://spotify-platylists-asaf.netlify.app/)
 
 A simple React app that returns the episodes of The Breaking Bad playlists from API source:
 
