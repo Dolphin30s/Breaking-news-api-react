@@ -1,6 +1,6 @@
 # The Breaking Bad
 
-A simple React app that returns the episodes of The Breaking Bad playlists from API source:
+A simple React app that returns the episodes of The Breaking Bad from the API source:
 
 - **The Breaking Bad API**
 
