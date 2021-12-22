@@ -101,7 +101,8 @@ const Episodes = () => {
                                                     : episode.season == 2 ? 'rgb(54, 32, 32)'
                                                         : episode.season == 3 ? 'rgb(53 50 116)'
                                                             : episode.season == 4 ? 'rgb(220 60 60)'
-                                                                : ''
+                                                                : episode.season == 5 ? 'rgb(97 216 43)'
+                                                                    : ''
                                         }}>
                                         <span >season {episode.season}</span>
                                     </div>
