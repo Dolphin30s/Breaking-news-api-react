@@ -7,7 +7,6 @@ A simple React app that returns the episodes of The Breaking Bad from the API so
 ## Getting started
 
 Fork the project and clone it locally.<br />
-Create a file at the root of the project called `.env` with the following contents:
 
 In the project directory, you can run:
 
