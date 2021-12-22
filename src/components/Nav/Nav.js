@@ -12,7 +12,7 @@ const MyNav = () => {
         <Navbar variant="dark" style={{ background: bgDark }} expand="lg" className='col-sm-12' id='navBar'>
 
             <Navbar.Brand href="/" className='col-sm-12 col-lg-7 font-weight-bold titleOfNav'
-            >Breaking Bad Episodes
+            >The Breaking Bad
             </Navbar.Brand>
 
 
