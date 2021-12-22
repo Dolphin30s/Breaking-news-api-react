@@ -1,0 +1,45 @@
+nav#navBar {
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+  left: 0;
+  height: 50px;
+}
+.nav-item {
+  /* color: #fff; */
+  margin: auto;
+  font-weight: bolder;
+  margin-right: 20px;
+  font-family: proxima-nova;
+  font-weight: 300;
+  font-style: normal;
+  /* text-transform: uppercase; */
+  letter-spacing: 1px;
+  text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.1),
+    1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.titleOfNav {
+  font-family: proxima-nova;
+  font-style: normal;
+  /* text-transform: uppercase; */
+  color: white !important;
+  text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.1),
+    1px 1px 1px rgba(0, 0, 0, 0.5);
+  /* color: #fff; */
+}
+
+a {
+  text-decoration: none !important;
+}
+.container-fluid {
+  margin: 0;
+  padding: 0;
+  height: 100vh !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .titleOfNav.navbar-brand {
+    position: absolute;
+    text-align: center;
+  }
+}

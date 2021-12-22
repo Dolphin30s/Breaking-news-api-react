@@ -1,0 +1,44 @@
+.charactersContainer {
+  height: 80vh;
+}
+.cardOfCharacters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: max-content;
+  text-align: center;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  height: max-content;
+  min-height: 300px;
+}
+.cardOfCharacters h1 {
+  font-variant: small-caps;
+  text-transform: lowercase;
+}
+.cardOfCharacters .col-sm-12 {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+.cardOfCharacters img {
+  height: 100%;
+  max-height: 500px;
+  width: inherit;
+}
+.cardOfCharacters span {
+  margin: 0 5px 0 5px;
+  font-style: italic;
+}
+.cardOfCharacters .rowOfCcharacter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cardOfCharacters .attribute {
+  font-weight: bold;
+}
+@media only screen and (max-width: 600px) {
+  .cardOfCharacters img {
+    max-height: 300px;
+  }
+}

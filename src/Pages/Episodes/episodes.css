@@ -1,0 +1,36 @@
+.cardOfEisode {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  margin: 5px auto 5px 5px;
+}
+.cardOfEisode h2,
+.cardOfEisode p {
+  text-align: center;
+  color: black;
+}
+.cardOfEisode h2 {
+  font-weight: bolder;
+}
+.cardOfEisode h2:hover {
+  cursor: pointer;
+  color: blue;
+}
+.episodesContainer {
+  height: max-content;
+}
+.cardOfEisode .season {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgb(54, 32, 32);
+  color: #fff;
+  text-align: center;
+}
+.sort:hover {
+  cursor: pointer !important;
+  font-weight: bolder !important;
+}

@@ -1,0 +1,15 @@
+.episodeContainer {
+  height: 80vh;
+}
+.cardOfEpisode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px !important;
+  text-align: center;
+  margin: auto;
+}
+.cardOfEpisode a {
+  margin: 5px;
+  font-style: italic;
+}
