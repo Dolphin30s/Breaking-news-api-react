@@ -29,7 +29,7 @@ const Episode = () => {
                         episodeState != undefined ?
                             episodeState.map(episode => {
                                 return (
-                                    <div key={episode.episode_id}>
+                                    <div key={episode.title}>
                                         <h1>{episode.title}</h1>
                                         {/* <p>{episode.air_date}</p> */}
                                         <p>{new Date(episode.air_date).toLocaleDateString('he-IL', { timeZone: 'Asia/Jerusalem' }).replace(/\D/g, '/')}</p>

@@ -29,7 +29,8 @@
   height: max-content;
   border-top-right-radius: 10px !important;
   border-top-left-radius: 10px !important;
-  height: 30px;
+  height: max-content;
+  padding: 5px 0 5px 0;
 }
 .cardOfEisode h2:hover {
   cursor: pointer;

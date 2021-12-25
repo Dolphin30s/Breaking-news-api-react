@@ -45,7 +45,7 @@ const Characters = () => {
 
                                                 {
                                                     character.appearance.length > 0 ?
-                                                        character.appearance.map((app, i) =>
+                                                        character.appearance.forEach((app, i) =>
                                                             i != character.appearance.length - 1 ?
                                                                 <React.Fragment key={i}>
                                                                     {i == 0 && <p className='font-weight-bold'>Seasons:</p>}
@@ -60,7 +60,7 @@ const Characters = () => {
                                                 <hr />
                                                 {
                                                     character.occupation.length > 0 ?
-                                                        character.occupation.map((occ, i) =>
+                                                        character.occupation.forEach((occ, i) =>
                                                             i != character.occupation.length - 1 ?
                                                                 <React.Fragment key={i}>
                                                                     {i == 0 && <p className='font-weight-bold'>Occupation:</p>}

@@ -70,7 +70,7 @@ const Character = () => {
                     {
                         quotesState != undefined &&
                         quotesState.map((quotes, index) => {
-                            return <React.Fragment key={quotes.quote_id}>
+                            return <React.Fragment key={quotes.quote}>
                                 {index === 0 && <h2 className='text-left px-3 my-3'>Quotes</h2>}
                                 {index !== 0 && index !== quotesState.length && < hr className='colHr' />}
                                 <div className='px-3'>
