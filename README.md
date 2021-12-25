@@ -1,6 +1,7 @@
 # The Breaking Bad
+##  [Live Demo](https://the-breaking-bad-episodes.netlify.app/)
 
-A simple React app that returns the episodes of The Breaking Bad from the API source:
+A simple React app that returns the Episodes and Characters of The Breaking Bad from the API source:
 
 - **The Breaking Bad API**
 
