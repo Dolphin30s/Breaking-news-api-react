@@ -1,15 +1,16 @@
 .cardOfEisode {
-  width: 100px;
+  /* width: 100px; */
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 150px;
-  margin: 5px auto 5px 5px;
+  height: 250px;
+  margin: 5px auto 15px 5px;
 }
 .cardOfEisode h2,
 .cardOfEisode p {
   text-align: center;
   color: black;
+  font-size: x-large;
 }
 .cardOfEisode h2 {
   font-weight: bolder;
@@ -18,9 +19,7 @@
   cursor: pointer;
   color: blue;
 }
-.episodesContainer {
-  height: max-content;
-}
+
 .cardOfEisode .season {
   position: absolute;
   bottom: 0;

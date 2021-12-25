@@ -22,7 +22,7 @@ const Episode = () => {
     }, [])
 
     return (
-        <div className='container episodeContainer'>
+        <div className='container'>
             <MDBRow>
                 <MDBCard className='col-sm-12 cardOfEpisode animated fadeIn'>
                     {

@@ -9,7 +9,7 @@ export default function charactersReducer(state = initialState, action) {
 
     switch (action.type) {
 
-        case "GET_CHARACTERS":
+        case "GET_ALL_CHARACTERS":
             return { characters: action.payload }
 
         case "GET_CHARACTERS_BY_ID":

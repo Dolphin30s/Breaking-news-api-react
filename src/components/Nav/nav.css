@@ -27,7 +27,9 @@ nav#navBar {
     1px 1px 1px rgba(0, 0, 0, 0.5);
   /* color: #fff; */
 }
-
+.navItem span {
+  color: #fff !important;
+}
 a {
   text-decoration: none !important;
 }
@@ -38,8 +40,43 @@ a {
 }
 
 @media only screen and (max-width: 600px) {
-  .titleOfNav.navbar-brand {
-    position: absolute;
+  /* .titleOfNav.navbar-brand {
+    position: relative;
     text-align: center;
+  } */
+}
+@media only screen and (max-width: 990px) {
+  button.navbar-toggler.collapsed {
+    left: 0;
+    position: absolute;
+  }
+  button.navbar-toggler.collapsed {
+    left: 0;
+    top: 0;
+  }
+
+  button.navbar-toggler {
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  .navbar-toggler:focus {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+  }
+  .mobileHr {
+    display: block;
+  }
+
+  .titleOfNav.navbar-brand {
+    position: relative;
+    font-size: small;
+    top: 15px;
+    left: 50%;
+    color: #fff;
+    text-align: center;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
   }
 }
