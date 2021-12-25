@@ -5,21 +5,67 @@
   align-items: center;
   height: 250px;
   margin: 5px auto 15px 5px;
+  background: none !important;
+  border-radius: 10px !important;
 }
 .cardOfEisode h2,
 .cardOfEisode p {
   text-align: center;
-  color: black;
-  font-size: x-large;
+}
+.cardOfEisode p {
+  color: #fff;
 }
 .cardOfEisode h2 {
+  font-size: large;
+  color: black;
   font-weight: bolder;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  z-index: 1;
+  height: max-content;
+  border-top-right-radius: 10px !important;
+  border-top-left-radius: 10px !important;
+  height: 30px;
 }
 .cardOfEisode h2:hover {
   cursor: pointer;
-  color: blue;
+  font-weight: bold;
+}
+.episodesAttributes hr {
+  border-top: 1px solid white !important;
+}
+.cardOfEisode .episodesAttributes {
+  text-align: center;
+  display: none;
+  position: absolute;
+  /* background: rgb(54, 32, 32); */
+  background: rgb(48 31 31 / 58%);
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  padding: 0 5px 0 5px;
+  z-index: 3;
 }
 
+.cardOfEisode .cardImg {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.cardOfEisode:hover .episodesAttributes {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  pointer-events: none;
+}
 .cardOfEisode .season {
   position: absolute;
   bottom: 0;
@@ -27,6 +73,8 @@
   width: 100%;
   color: #fff;
   text-align: center;
+  border-bottom-right-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
 }
 .sort:hover {
   cursor: pointer !important;

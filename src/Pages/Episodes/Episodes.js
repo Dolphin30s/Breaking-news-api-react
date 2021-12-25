@@ -47,6 +47,7 @@ const Episodes = () => {
                         <option value={2}>season 2</option>
                         <option value={3}>season 3</option>
                         <option value={4}>season 4</option>
+                        <option value={5}>season 5</option>
                     </select>
                 </MDBCol>
 
@@ -84,22 +85,52 @@ const Episodes = () => {
                                 return <MDBCol key={episode.episode_id} sm='12' md='6' lg='3' >
 
                                     <MDBCard className='cardOfEisode'>
-                                        <Link to={`episode/${episode.episode_id}`}><h2>{episode.title}</h2></Link>
-                                        <p>{new Date(episode.air_date).toLocaleDateString('he-IL', { timeZone: 'Asia/Jerusalem' }).replace(/\D/g, '/')}</p>
 
+                                        <Link to={`episode/${episode.episode_id}`}><h2
+                                            title={`episode/${episode.episode_id}`}
+                                            style={{
+                                                background:
+                                                    episode.season == 1 ? 'rgb(54, 32, 32)'
+                                                        : episode.season == 2 ? 'rgb(53 50 116)'
+                                                            : episode.season == 3 ? 'rgb(140 111 111)'
+                                                                : episode.season == 4 ? 'rgb(220 60 60)'
+                                                                    : episode.season == 5 ? 'rgb(97 216 43)'
+                                                                        : ''
+                                            }
+                                            }
+                                        >{episode.title}</h2>
+                                        </Link>
+                                        <div className='episodesAttributes animated fadeIn'>
+                                            <p style={{ fontSize: 'x-large' }}>Episode {episode.episode}</p>
+                                            <p>Air date: {new Date(episode.air_date).toLocaleDateString('he-IL', { timeZone: 'Asia/Jerusalem' }).replace(/\D/g, '/')}</p>
+                                        </div>
+                                        <img src={
+                                            episode.season == 1 ?
+                                                'season1.jpg'
+                                                : episode.season == 2 ?
+                                                    'season2.jpg'
+                                                    : episode.season == 3 ?
+                                                        'season3.jpg'
+                                                        : episode.season == 4 ?
+                                                            'season4.jpg'
+                                                            : episode.season == 5 ?
+                                                                'season5.jpg'
+                                                                : ''
+                                        }
+
+                                            className='cardImg' />
                                         <div className='season'
                                             style={{
                                                 background:
-                                                    episode.season == 1 ? 'rgb(140 111 111)'
-                                                        : episode.season == 2 ? 'rgb(54, 32, 32)'
-                                                            : episode.season == 3 ? 'rgb(53 50 116)'
+                                                    episode.season == 1 ? 'rgb(54, 32, 32)'
+                                                        : episode.season == 2 ? 'rgb(53 50 116)'
+                                                            : episode.season == 3 ? 'rgb(140 111 111)'
                                                                 : episode.season == 4 ? 'rgb(220 60 60)'
                                                                     : episode.season == 5 ? 'rgb(97 216 43)'
                                                                         : ''
                                             }}>
                                             <span>season {episode.season}</span>
                                         </div>
-
                                     </MDBCard>
                                 </MDBCol>
 

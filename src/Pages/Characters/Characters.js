@@ -27,14 +27,14 @@ const Characters = () => {
             <MDBRow>
 
                 {
-                    charactersState != undefined ?
+                    charactersState.length !== 0 ?
 
-                        charactersState.length == 0 ?
+                        charactersState === undefined ?
                             <h1>No results founded</h1>
 
                             : charactersState.map(character => {
                                 return (
-                                    <MDBCol sm='12' md='6' lg='3'>
+                                    <MDBCol sm='12' md='6' lg='3' key={character.name}>
                                         <MDBCard className='cardOfCharacters '>
 
                                             <img src={character.img}
@@ -90,7 +90,7 @@ const Characters = () => {
             </MDBRow>
             <MDBRow>
                 {
-                    count !== 80 &&
+                    count !== 80 && charactersState.length > 0 &&
                     <input type='button' className='btn col-sm-3 loadBtn' value={'Load more...'}
                         onClick={() => setCount(prevState => prevState + 10)}
                     />
