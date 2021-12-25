@@ -5,7 +5,7 @@ A simple React app that returns the Episodes and Characters of The Breaking Bad 
 
 - **The Breaking Bad API**
 
-![breakingbad](https://user-images.githubusercontent.com/33829557/147389280-1718ff3d-b1ff-4bc2-97db-ff24fc679506.gif)
+![breakingbad](https://user-images.githubusercontent.com/33829557/147389336-f104d23e-36c9-4e3f-af68-c9bf401822fb.gif)
 
 ## Getting started
 
