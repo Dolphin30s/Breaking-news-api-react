@@ -27,70 +27,73 @@ const Characters = () => {
             <MDBRow>
 
                 {
-                    charactersState.length !== 0 ?
+                    charactersState !== undefined ?
 
-                        charactersState === undefined ?
-                            <h1>No results founded</h1>
+                        // charactersState.length === 0 ?
+                        //     <h1>No results founded</h1>
 
-                            : charactersState.map(character => {
-                                return (
-                                    <MDBCol sm='12' md='6' lg='3' key={character.name}>
-                                        <MDBCard className='cardOfCharacters '>
+                        //     : 
+                        charactersState.map(character => {
+                            return (
+                                <MDBCol sm='12' md='6' lg='3' key={character.name}>
+                                    <MDBCard className='cardOfCharacters '>
 
-                                            <img src={character.img}
-                                                alt={character.name}
-                                            />
-                                            <h1><Link to={`/character/${character.name.replace(/\s/g, '+')}`}>{character.name}</Link></h1>
-                                            <div className='characterAttributes animated fadeIn'>
+                                        <img src={character.img}
+                                            alt={character.name}
+                                        />
+                                        <h1><Link to={`/character/${character.name.replace(/\s/g, '+')}`}>{character.name}</Link></h1>
+                                        <div className='characterAttributes animated fadeIn'>
 
-                                                {
-                                                    character.appearance.length > 0 ?
-                                                        character.appearance.forEach((app, i) =>
-                                                            i != character.appearance.length - 1 ?
-                                                                <React.Fragment key={i}>
-                                                                    {i == 0 && <p className='font-weight-bold'>Seasons:</p>}
-                                                                    <span>{app}, </span>
-                                                                </React.Fragment>
-                                                                : character.appearance.length === 1 ?
-                                                                    <span>Seasons: {app}</span>
-                                                                    : <span>{app}</span>
-                                                        )
-                                                        : ''
-                                                }
-                                                <hr />
-                                                {
-                                                    character.occupation.length > 0 ?
-                                                        character.occupation.forEach((occ, i) =>
-                                                            i != character.occupation.length - 1 ?
-                                                                <React.Fragment key={i}>
-                                                                    {i == 0 && <p className='font-weight-bold'>Occupation:</p>}
-                                                                    <span>{occ}, </span>
-                                                                </React.Fragment>
-                                                                : character.occupation.length === 1 ?
-                                                                    <>
-                                                                        <p className='font-weight-bold'>Occupation:</p>
-                                                                        <span>{occ}</span>
-                                                                    </>
-                                                                    : <span>{occ}</span>
-                                                        )
-                                                        : ''
-                                                }
-                                                <hr />
-                                                <p className='font-weight-bold'>Portrayed:</p>
-                                                <p>{character.portrayed}</p>
-                                            </div>
-                                        </MDBCard>
+                                            {
+                                                character.appearance.length > 0 ?
+                                                    character.appearance.map((app, i) =>
+                                                        i != character.appearance.length - 1 ?
+                                                            <React.Fragment key={`appearance${i}`}>
+                                                                {i == 0 && <p className='font-weight-bold'>Seasons:</p>}
+                                                                <span>{app}, </span>
+                                                            </React.Fragment>
+                                                            : character.appearance.length === 1 ?
+                                                                <span>Seasons: {app}</span>
+                                                                : <span>{app}</span>
+                                                    )
+                                                    : ''
+                                            }
+                                            <hr />
+                                            {
+                                                character.occupation.length > 0 ?
+                                                    character.occupation.map((occ, i) =>
+                                                        i != character.occupation.length - 1 ?
+                                                            <React.Fragment key={`occupation ${i}`}>
+                                                                {i == 0 && <p className='font-weight-bold'>Occupation:</p>}
+                                                                <span>{occ}, </span>
+                                                            </React.Fragment>
+                                                            : character.occupation.length === 1 ?
+                                                                <>
+                                                                    <p className='font-weight-bold'>Occupation:</p>
+                                                                    <span>{occ}</span>
+                                                                </>
+                                                                : <span>{occ}</span>
+                                                    )
+                                                    : ''
+                                            }
+                                            <hr />
+                                            <p className='font-weight-bold'>Portrayed:</p>
+                                            <p>{character.portrayed}</p>
+                                        </div>
+                                    </MDBCard>
 
-                                    </MDBCol>
+                                </MDBCol>
 
-                                )
-                            })
+                            )
+                        })
                         : <Spinner />
                 }
             </MDBRow>
             <MDBRow>
                 {
-                    count !== 80 && charactersState.length > 0 &&
+                    count !== 80 &&
+                    charactersState !== undefined &&
+                    //  charactersState.length > 0 &&
                     <input type='button' className='btn col-sm-3 loadBtn' value={'Load more...'}
                         onClick={() => setCount(prevState => prevState + 10)}
                     />

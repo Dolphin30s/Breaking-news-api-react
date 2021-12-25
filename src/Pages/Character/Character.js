@@ -28,9 +28,9 @@ const Character = () => {
         <div className='container'>
             <MDBCard className='col-sm-12 cardOfCharacters'>
                 {
-                    characterState != undefined ?
+                    characterState !== undefined ?
 
-                        characterState.length == 0 ?
+                        characterState.length === 0 ?
                             <h1>No results founded</h1>
 
                             : characterState.map(character => {
