@@ -39,7 +39,10 @@ a {
   padding: 0;
   height: 100vh !important;
 }
-
+.navLogo {
+  max-width: 90px !important;
+  /* max-height: 60px; */
+}
 @media only screen and (max-width: 600px) {
   /* .titleOfNav.navbar-brand {
     position: relative;
@@ -79,5 +82,9 @@ a {
     text-align: center;
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
+  }
+  .navLogo {
+    position: absolute;
+    right: 0;
   }
 }

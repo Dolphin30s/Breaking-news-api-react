@@ -24,6 +24,11 @@ const Characters = () => {
 
     return (
         <div className='container charactersContainer'>
+
+            <MDBRow>
+                <h1 className='col-sm-12 text-center'>Characters</h1>
+            </MDBRow>
+
             <MDBRow>
 
                 {
@@ -33,11 +38,11 @@ const Characters = () => {
                         //     <h1>No results founded</h1>
 
                         //     : 
-                        charactersState.map(character => {
+
+                        charactersState.map((character, i) => {
                             return (
                                 <MDBCol sm='12' md='6' lg='3' key={character.name}>
                                     <MDBCard className='cardOfCharacters '>
-
                                         <img src={character.img}
                                             alt={character.name}
                                         />
