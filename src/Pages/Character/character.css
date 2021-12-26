@@ -13,7 +13,6 @@
 .cardOfCharacters h1 {
   font-variant: small-caps;
   text-transform: lowercase;
-  cursor: pointer;
 }
 .cardOfCharacters .portrayed {
   cursor: pointer;
