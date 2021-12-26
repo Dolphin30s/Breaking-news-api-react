@@ -13,13 +13,13 @@ const MyNav = () => {
     return (
         <Navbar variant="dark" style={{ background: bgDark }} expand="lg" className='col-sm-12' id='navBar'>
 
-            <Navbar.Brand href="/" className='col-sm-12 col-lg-6 font-weight-bold titleOfNav'
+            <Navbar.Brand href="/" className='col-sm-12 col-lg-5 font-weight-bold titleOfNav'
             >The Breaking Bad
             </Navbar.Brand>
 
             <Navbar.Toggle aria-controls="navbar-dark-example" />
 
-            <Navbar.Collapse id="navbar-dark-example" className='col-sm-12 col-lg-6 text-center'>
+            <Navbar.Collapse id="navbar-dark-example" className='col-sm-12 col-lg-7 text-center'>
                 <Nav className='text-left row'>
 
                     <NavItem className='navItem col-sm-12 col-lg-2 text-center'>
