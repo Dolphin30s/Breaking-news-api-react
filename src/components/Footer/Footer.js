@@ -15,6 +15,7 @@ const Footer = () => {
         <div className="footer" style={{ display }}>
             <p>This site created by <a className='text-white' target='_blank'
                 rel="noopener noreferrer"
+                title='https://github.com/asaf6024'
                 href='https://github.com/asaf6024'> @Asaf Almog 2021</a></p>
         </div>
     )
