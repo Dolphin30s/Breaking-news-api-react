@@ -4,7 +4,8 @@
 .charactersContainer img {
   height: 300px;
   width: 100%;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 .charactersContainer img:hover {
   opacity: 0.7;
@@ -30,12 +31,12 @@
   text-align: center;
   display: none;
   position: absolute;
-  /* background: rgb(54, 32, 32); */
   background: rgb(48 31 31 / 58%);
   color: #fff;
   left: 0;
   top: 0;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   padding: 0 5px 0 5px;
 }
 .charactersContainer hr {
@@ -43,6 +44,7 @@
 }
 .charactersContainer .cardOfCharacters {
   margin: 0 0 10px 0;
+  border-radius: 10px;
 }
 .charactersContainer .loadBtn {
   background: rgb(54, 32, 32);

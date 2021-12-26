@@ -15,7 +15,7 @@ import './characters.css'
 const Characters = () => {
     const dispatch = useDispatch()
     let charactersState = useSelector((state) => state.charactersReducer.characters)
-    const [count, setCount] = useState(10)
+    const [count, setCount] = useState(12)
 
 
     useEffect(() => {
@@ -91,11 +91,11 @@ const Characters = () => {
             </MDBRow>
             <MDBRow>
                 {
-                    count !== 80 &&
+                    count !== 84 &&
                     charactersState !== undefined &&
                     //  charactersState.length > 0 &&
                     <input type='button' className='btn col-sm-3 loadBtn' value={'Load more...'}
-                        onClick={() => setCount(prevState => prevState + 10)}
+                        onClick={() => setCount(prevState => prevState + 12)}
                     />
                 }
             </MDBRow>
