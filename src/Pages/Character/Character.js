@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { MDBCard, MDBCol, MDBRow } from 'mdbreact'
 import { useParams } from "react-router-dom";
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 //Redux
 import { useSelector, useDispatch } from 'react-redux'
@@ -17,12 +18,35 @@ const Character = () => {
     let { characterName } = useParams();
     let characterState = useSelector((state) => state.charactersReducer.character)
     let quotesState = useSelector((state) => state.quotesReducer.quotes)
+    const [copy, setCopy] = useState('')
+    const [display, setDisplay] = useState([])
 
     useEffect(() => {
         dispatch((getCharactersById(characterName)))
         dispatch(getQuotesByName(characterName))
 
     }, [characterName])
+
+    useEffect(() => {
+        if (quotesState.length > 0) {
+            let displayForIcons = []
+            for (let index = 0; index < quotesState.length; index++) {
+                displayForIcons.push('none')
+            }
+            setDisplay(displayForIcons)
+
+        }
+
+    }, [quotesState])
+
+    const updateDisplay = (index) => {
+        console.log(index)
+
+        let displayForIcons = display.map((d, i) => i === index ? 'block' : 'none')
+
+        setDisplay(displayForIcons)
+        console.log('displayForIcons', displayForIcons)
+    }
 
     return (
         <div className='container'>
@@ -72,9 +96,23 @@ const Character = () => {
                         quotesState.map((quotes, index) => {
                             return <React.Fragment key={quotes.quote}>
                                 {index === 0 && <h2 className='text-left px-3 my-3'>Quotes</h2>}
-                                {index !== 0 && index !== quotesState.length && < hr className='colHr' />}
-                                <div className='px-3'>
-                                    <p className='text-left'><i className="fas fa-quote-right"></i>&nbsp;&nbsp;<q>{quotes.quote}</q></p>
+                                {index !== 0 && index !== quotesState.length ? < hr /> : < hr className='colHr' />}
+                                <div className='px-3 row copyQuote'>
+                                    <p className='text-left col-lg-8'
+                                        style={{ margin: '0' }}
+                                    ><i className="fas fa-quote-right"></i>&nbsp;&nbsp;<q>{quotes.quote}</q></p>
+
+                                    <CopyToClipboard text={quotes.quote}
+                                    // onCopy={() => setCopy(quotes.quote)}
+                                    >
+                                        {/* <span>Copy to clipboard with span</span> */}
+                                        <div className='copyQuoteIcon col-lg-4'>
+                                            <i className="far fa-copy fa-2x"
+                                                title='Copy'
+                                                onClick={() => updateDisplay(index)}></i>
+                                            <span style={{ display: display[index] }}>Copied!</span>
+                                        </div>
+                                    </CopyToClipboard>
                                 </div>
                             </React.Fragment>
 

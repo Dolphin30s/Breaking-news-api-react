@@ -27,6 +27,9 @@
   margin: 0 5px 0 5px;
   font-style: italic;
 }
+.cardOfCharacters .colHr {
+  margin-top: 0;
+}
 .cardOfCharacters .rowOfCcharacter {
   display: flex;
   justify-content: center;
@@ -38,6 +41,7 @@
 .cardOfCharacters .QuotesColumn {
   max-height: 400px !important;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 .cardOfCharacters .QuotesColumn h2 {
   background: rgb(54, 32, 32);
@@ -48,7 +52,18 @@
   position: sticky;
   top: 0px;
 }
-
+.cardOfCharacters .copyQuote {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cardOfCharacters .copyQuoteIcon {
+  text-align: right;
+}
+.cardOfCharacters .copyQuoteIcon:hover {
+  color: blue;
+  cursor: pointer;
+}
 @media only screen and (max-width: 600px) {
   .cardOfCharacters img {
     max-height: 300px;
