@@ -1,12 +1,12 @@
 
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import { MDBRow, MDBCard, MDBCol } from 'mdbreact'
 import { Link, useNavigate } from 'react-router-dom';
 
 //Redux
 import { useSelector, useDispatch } from 'react-redux'
 import { getEpisodes } from '../../redux/episodes/episodes-actions';
-
+import { updateSearch, updateSeason, updateSort } from '../../redux/Inputs/Inputs-actions';
 //components
 import Spinner from '../../components/Spinner/Spinner';
 
@@ -14,13 +14,12 @@ import Spinner from '../../components/Spinner/Spinner';
 import './episodes.css'
 
 const Episodes = () => {
-    const [search, setSearch] = useState('')
-    const [season, setSeason] = useState(null)
-    const [sortText, setSortText] = useState('Ascending')
     const dispatch = useDispatch()
     let navigate = useNavigate()
-
     let episodesState = useSelector((state) => state.episodesReducer.episodes)
+    let searchState = useSelector((state) => state.inputsReducer.search)
+    let seasonState = useSelector((state) => state.inputsReducer.season)
+    let sortState = useSelector((state) => state.inputsReducer.sort)
 
     useEffect(() => {
         dispatch(getEpisodes())
@@ -30,19 +29,21 @@ const Episodes = () => {
         <div className='container animated fadeIn'>
             <h1 className='text-center'>List of Episodes</h1>
             <MDBRow>
+
                 <MDBCol sm='2'>
                     <span className='sort'
-                        onClick={() => sortText == 'Ascending' ? setSortText('Descending') : setSortText('Ascending')}
+                        onClick={() => sortState == 'Ascending' ? dispatch(updateSort('Descending')) : dispatch(updateSort('Ascending'))}
                     >
-                        {sortText}&nbsp;
+                        {sortState}&nbsp;
                         <i className=" fas fa-sort"></i>
                     </span>
                 </MDBCol>
 
                 <MDBCol sm='4'>
                     <select
+                        defaultValue={seasonState}
                         className='form-control'
-                        onChange={e => e.target.value != 0 ? setSeason(e.target.value) : setSeason(null)}>
+                        onChange={e => e.target.value != 0 ? dispatch(updateSeason(e.target.value)) : dispatch(updateSeason(null))}>
                         <option value={0}>Select... </option>
                         <option value={1}>season 1</option>
                         <option value={2}>season 2</option>
@@ -56,8 +57,8 @@ const Episodes = () => {
                     <input
                         className='form-control'
                         placeholder='Search...'
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
+                        value={searchState}
+                        onChange={(e) => dispatch(updateSearch(e.target.value))}
                         type='search'
                     />
                 </MDBCol>
@@ -68,16 +69,16 @@ const Episodes = () => {
                     episodesState != undefined && episodesState.length > 0 ?
                         episodesState
                             .filter(episode => {
-                                if (search === '')
+                                if (searchState === '')
                                     return episode;
                                 else if (
-                                    episode.title.toLowerCase().includes(search.toLowerCase())
+                                    episode.title.toLowerCase().includes(searchState.toLowerCase())
                                 )
                                     return episode;
                             })
-                            .filter(episode => season != null ? episode.season == season : episode)
+                            .filter(episode => seasonState != null ? episode.season == seasonState : episode)
                             .sort((a, b) => {
-                                return sortText === 'Descending' ?
+                                return sortState === 'Descending' ?
                                     new Date(b.air_date) - new Date(a.air_date)
                                     : new Date(a.air_date) - new Date(b.air_date)
                             })

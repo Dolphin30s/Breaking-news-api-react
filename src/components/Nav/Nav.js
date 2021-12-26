@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Navbar, Nav, NavItem } from 'react-bootstrap'
-
 import { Link } from 'react-router-dom'
 
 //css
@@ -10,7 +9,6 @@ const MyNav = () => {
 
     const [homeWeight, setHomeWeight] = useState('bold')
     const [characterWeight, setCharacterWeight] = useState()
-
 
     const setWeight = page => {
 
@@ -34,17 +32,16 @@ const MyNav = () => {
             <Navbar.Toggle aria-controls="navbar-dark-example" />
 
             <Navbar.Collapse id="navbar-dark-example" className='col-sm-12 col-lg-7 text-center'>
-                <Nav className='text-left row'>
 
+                <Nav className='text-left row'>
                     <NavItem className='navItem col-sm-12 col-lg-2 text-center' style={{ fontWeight: homeWeight }}>
                         <Link to='/'> <span id='homeItem'
-                            onClick={homeWeight => setWeight('homeWeight')}
+                            onClick={() => setWeight('homeWeight')}
                         > Episodes</span></Link>
                     </NavItem>
-
                     <NavItem className='navItem col-sm-12 col-lg-2 text-center' style={{ fontWeight: characterWeight }}>
                         <Link to='/characters'> <span id='homeItem'
-                            onClick={characterWeight => setWeight('characterWeight')}
+                            onClick={() => setWeight('characterWeight')}
                         > Characters</span></Link>
                     </NavItem>
                 </Nav>
