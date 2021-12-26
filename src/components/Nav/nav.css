@@ -84,7 +84,7 @@ a {
     transform: translateX(-50%) translateY(-50%);
   }
   .navLogo {
-    position: absolute;
+    position: absolute !important;
     right: 0;
   }
 }
