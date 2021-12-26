@@ -3,4 +3,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 80vh;
+}
+.spinner-border {
+  width: 5rem !important;
+  height: 5rem !important;
 }

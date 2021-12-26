@@ -69,7 +69,7 @@ const Character = () => {
                                                 {new Date(character.birthday).toLocaleDateString('he-IL', { timeZone: 'Asia/Jerusalem' }).replace(/\D/g, '/')}
                                             </p>}
 
-                                            {character.nickname != 'Unknown' && <p><span className='attribute'>Nick Name:</span> {character.nickname}</p>}
+                                            {character.nickname != 'Unknown' && <p><span className='attribute'>Nick name:</span> {character.nickname}</p>}
                                             {character.status != 'Unknown' && <p><span className='attribute'>Status: </span>{character.status}</p>}
 
                                             {
