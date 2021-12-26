@@ -8,6 +8,7 @@
   padding-left: 0 !important;
   height: max-content;
   min-height: 300px;
+  margin-bottom: 15px;
 }
 .cardOfCharacters h1 {
   font-variant: small-caps;

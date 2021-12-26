@@ -30,7 +30,11 @@ const Episode = () => {
                             episodeState.map(episode => {
                                 return (
                                     <div key={episode.title}>
+                                        <div className='seasonHeader'>
+                                            <p>Episode: {episode.episode}</p>
+                                        </div>
                                         <h1>{episode.title}</h1>
+                                        <br />
                                         {/* <p>{episode.air_date}</p> */}
                                         <p>{new Date(episode.air_date).toLocaleDateString('he-IL', { timeZone: 'Asia/Jerusalem' }).replace(/\D/g, '/')}</p>
 
@@ -41,11 +45,15 @@ const Episode = () => {
                                                         <React.Fragment key={character}>
                                                             <Link to={`/character/${character.replace(/\s/g, '+')}`}>{character}</Link>
                                                             <span>,</span>
+                                                            {(i + 1) % 3 == 0 && <br />}
                                                         </React.Fragment>
                                                         : <Link to={`/character/${character.replace(/\s/g, '+')}`}>{character}</Link>
                                                 )
                                                 : ''
                                         }
+                                        <div className='seasonFooter'>
+                                            <p>Season: {episode.season}</p>
+                                        </div>
                                     </div>
                                 )
                             })

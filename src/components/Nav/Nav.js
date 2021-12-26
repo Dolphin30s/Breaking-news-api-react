@@ -39,7 +39,7 @@ const MyNav = () => {
                     <NavItem className='navItem col-sm-12 col-lg-2 text-center' style={{ fontWeight: homeWeight }}>
                         <Link to='/'> <span id='homeItem'
                             onClick={homeWeight => setWeight('homeWeight')}
-                        > Home</span></Link>
+                        > Episodes</span></Link>
                     </NavItem>
 
                     <NavItem className='navItem col-sm-12 col-lg-2 text-center' style={{ fontWeight: characterWeight }}>

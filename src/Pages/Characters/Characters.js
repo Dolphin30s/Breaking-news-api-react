@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { MDBCard, MDBCol, MDBRow } from 'mdbreact'
-import { Link, useParams } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 //Redux
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllCharacters } from '../../redux/characters/characters-actions'
@@ -14,6 +13,7 @@ import './characters.css'
 
 const Characters = () => {
     const dispatch = useDispatch()
+    let navigate = useNavigate()
     let charactersState = useSelector((state) => state.charactersReducer.characters)
     const [count, setCount] = useState(12)
 
@@ -42,7 +42,7 @@ const Characters = () => {
                         charactersState.map((character, i) => {
                             return (
                                 <MDBCol sm='12' md='6' lg='3' key={character.name}>
-                                    <MDBCard className='cardOfCharacters '>
+                                    <MDBCard className='cardOfCharacters' onClick={() => navigate(`/character/${character.name.replace(/\s/g, '+')}`)}>
                                         <img src={character.img}
                                             alt={character.name}
                                         />

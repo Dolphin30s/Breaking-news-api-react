@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { MDBRow, MDBCard, MDBCol } from 'mdbreact'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 //Redux
 import { useSelector, useDispatch } from 'react-redux'
@@ -18,6 +18,7 @@ const Episodes = () => {
     const [season, setSeason] = useState(null)
     const [sortText, setSortText] = useState('Ascending')
     const dispatch = useDispatch()
+    let navigate = useNavigate()
 
     let episodesState = useSelector((state) => state.episodesReducer.episodes)
 
@@ -84,7 +85,7 @@ const Episodes = () => {
                             .map((episode, index) => {
                                 return episode.series === 'Breaking Bad' && <MDBCol key={episode.episode_id} sm='12' md='6' lg='3' >
 
-                                    <MDBCard className='cardOfEisode'>
+                                    <MDBCard className='cardOfEisode' onClick={() => navigate(`episode/${episode.episode_id}`)}>
 
                                         <Link to={`episode/${episode.episode_id}`}><h2
                                             title={`episode/${episode.episode_id}`}
@@ -98,7 +99,7 @@ const Episodes = () => {
                                                                         : ''
                                             }
                                             }
-                                        >{episode.title}</h2>
+                                        >{episode.episode}. {episode.title}</h2>
                                         </Link>
                                         <div className='episodesAttributes animated fadeIn'>
                                             <p style={{ fontSize: 'x-large' }}>Episode {episode.episode}</p>

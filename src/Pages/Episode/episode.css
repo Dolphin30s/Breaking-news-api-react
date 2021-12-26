@@ -2,11 +2,36 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 500px !important;
+  height: 80vh;
   text-align: center;
   margin: auto;
+  border-radius: 10px !important;
 }
 .cardOfEpisode a {
   margin: 5px;
   font-style: italic;
+}
+.cardOfEpisode .seasonFooter,
+.cardOfEpisode .seasonHeader {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  background: rgb(54, 32, 32);
+  text-align: center;
+}
+
+.cardOfEpisode .seasonFooter {
+  bottom: 0;
+  border-bottom-right-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+}
+.cardOfEpisode .seasonHeader {
+  top: 0;
+  border-top-right-radius: 10px !important;
+  border-top-left-radius: 10px !important;
+}
+.cardOfEpisode .seasonFooter p,
+.cardOfEpisode .seasonHeader p {
+  margin-top: 1em !important;
 }
