@@ -30,7 +30,7 @@ const Episodes = () => {
             <h1 className='text-center'>List of Episodes</h1>
             <MDBRow>
 
-                <MDBCol sm='2'>
+                <MDBCol sm='2' style={{ margin: 'auto' }}>
                     <span className='sort'
                         onClick={() => sortState == 'Ascending' ? dispatch(updateSort('Descending')) : dispatch(updateSort('Ascending'))}
                     >
