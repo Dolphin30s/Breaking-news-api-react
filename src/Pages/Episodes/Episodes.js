@@ -81,8 +81,8 @@ const Episodes = () => {
                                     : new Date(a.air_date) - new Date(b.air_date)
                             })
 
-                            .map(episode => {
-                                return <MDBCol key={episode.episode_id} sm='12' md='6' lg='3' >
+                            .map((episode, index) => {
+                                return episode.series === 'Breaking Bad' && <MDBCol key={episode.episode_id} sm='12' md='6' lg='3' >
 
                                     <MDBCard className='cardOfEisode'>
 
