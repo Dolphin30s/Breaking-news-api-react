@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { MDBCard, MDBCol, MDBRow } from 'mdbreact'
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 //Redux
@@ -15,11 +15,11 @@ import './character.css'
 
 const Character = () => {
     const dispatch = useDispatch()
-    let { characterName } = useParams();
+    let { characterName, portrayedName } = useParams();
     let characterState = useSelector((state) => state.charactersReducer.character)
     let quotesState = useSelector((state) => state.quotesReducer.quotes)
-    const [copy, setCopy] = useState('')
     const [display, setDisplay] = useState([])
+    const { state } = useLocation();
 
     useEffect(() => {
         dispatch((getCharactersById(characterName)))
@@ -68,6 +68,7 @@ const Character = () => {
                                             {character.birthday != 'Unknown' && <p> <span className='attribute'>Birth day:</span>
                                                 {new Date(character.birthday).toLocaleDateString('he-IL', { timeZone: 'Asia/Jerusalem' }).replace(/\D/g, '/')}
                                             </p>}
+
                                             {character.nickname != 'Unknown' && <p><span className='attribute'>Nick Name:</span> {character.nickname}</p>}
                                             {character.status != 'Unknown' && <p><span className='attribute'>Status: </span>{character.status}</p>}
 
@@ -83,6 +84,23 @@ const Character = () => {
                                                     )
                                                     : ''
                                             }
+
+                                            {state != undefined &&
+                                                <div className='portrait'>
+                                                    <br />  <br />
+                                                    {/* <hr /> */}
+                                                    <h2
+                                                        title={`https://www.google.com/search?q=${state.portrayedName.replace(/\s/g, '+')}`}
+                                                        onClick={() => window.open(`https://www.google.com/search?q=${state.portrayedName.replace(/\s/g, '+')}`)}
+                                                        className='portrayed'
+                                                    >
+                                                        <span className='attribute'>Portrait: </span>
+                                                        {state.portrayedName}
+                                                    </h2>
+                                                </div>
+
+                                            }
+
                                         </div>
 
                                     </div>

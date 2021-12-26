@@ -42,7 +42,12 @@ const Characters = () => {
                         charactersState.map((character, i) => {
                             return (
                                 <MDBCol sm='12' md='6' lg='3' key={character.name}>
-                                    <MDBCard className='cardOfCharacters' onClick={() => navigate(`/character/${character.name.replace(/\s/g, '+')}`)}>
+                                    <MDBCard className='cardOfCharacters'
+                                        //  onClick={() => navigate(`/character/${character.name.replace(/\s/g, '+')}`)}
+                                        onClick={() => {
+                                            navigate(`/character/${character.name.replace(/\s/g, '+')}`, { state: { portrayedName: character.portrayed } })
+                                        }}
+                                    >
                                         <img src={character.img}
                                             alt={character.name}
                                         />

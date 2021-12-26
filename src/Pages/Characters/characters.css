@@ -17,12 +17,22 @@
   height: 300px;
   pointer-events: none;
 }
-
-.charactersContainer h1 a {
+.charactersContainer .cardOfCharacters h1 {
+  background: rgb(54, 32, 32);
+  width: 100%;
+  margin: 0 !important;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+}
+.charactersContainer .cardOfCharacters h1 a {
   text-align: center;
   font-weight: bolder;
   font-size: x-large;
-  color: black;
+  color: #fff;
 }
 .charactersContainer h1 a:hover {
   color: blue;

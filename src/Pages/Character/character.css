@@ -13,6 +13,17 @@
 .cardOfCharacters h1 {
   font-variant: small-caps;
   text-transform: lowercase;
+  cursor: pointer;
+}
+.cardOfCharacters .portrayed {
+  cursor: pointer;
+  font-size: x-large;
+}
+.cardOfCharacters .portrayed:hover {
+  color: blue !important;
+}
+.cardOfCharacters .portrayed:hover span {
+  color: black !important;
 }
 .cardOfCharacters .col-sm-12 {
   padding-right: 0 !important;
