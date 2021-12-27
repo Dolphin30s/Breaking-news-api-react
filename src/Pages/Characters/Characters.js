@@ -16,11 +16,22 @@ const Characters = () => {
     let navigate = useNavigate()
     let charactersState = useSelector((state) => state.charactersReducer.characters)
     let countState = useSelector((state) => state.charactersReducer.count)
-    // const [count, setCount] = useState(12)
+    const [reAPICall, setReAPICall] = useState(false)
 
     useEffect(() => {
-        dispatch((getAllCharacters(countState)))
+
+        //initial Characters list
+        if (JSON.stringify(charactersState) === JSON.stringify([]))
+            dispatch((getAllCharacters(countState)))
+
         dispatch(deleteCharacter())
+
+    }, [countState])
+
+    //update Characters list when click Load More button...
+    useEffect(() => {
+        if (reAPICall)
+            dispatch((getAllCharacters(countState)))
     }, [countState])
 
     return (
@@ -44,7 +55,7 @@ const Characters = () => {
                             return (
                                 <React.Fragment key={character.name}>
                                     <MDBCol sm='12' md='6' lg='3'>
-                                        <MDBCard className='cardOfCharacters'
+                                        <MDBCard className='cardOfCharacters animated fadeIn'
                                             //  onClick={() => navigate(`/character/${character.name.replace(/\s/g, '+')}`)}
                                             onClick={() => {
                                                 navigate(`/character/${character.name.replace(/\s/g, '+')}`, { state: { portrayedName: character.portrayed } })
@@ -101,8 +112,11 @@ const Characters = () => {
                                             charactersState !== undefined &&
                                             //  charactersState.length > 0 &&
                                             <input type='button' className='btn col-sm-12 loadBtn' value={'Load more...'}
-                                                onClick={() =>
+                                                onClick={() => {
+                                                    setReAPICall(true)
                                                     dispatch(updateCount(12))
+                                                }
+
                                                     // setCount(prevState => prevState + 12)
                                                 }
                                             />

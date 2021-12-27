@@ -44,4 +44,5 @@ export const updateCount = (count) => dispatch => {
         type: 'UPDATE_COUNT',
         payload: count
     })
+    return Promise.resolve()
 }

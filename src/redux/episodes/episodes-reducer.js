@@ -11,7 +11,7 @@ export default function episodesReducer(state = initialState, action) {
             return { episodes: action.payload }
 
         case "GET_EPISODE_BY_ID":
-            return { episode: action.payload };
+            return { ...state, episode: action.payload };
 
         default:
             return state;

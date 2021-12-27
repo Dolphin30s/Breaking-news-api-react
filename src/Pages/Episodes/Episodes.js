@@ -23,7 +23,7 @@ const Episodes = () => {
     let sortState = useSelector((state) => state.inputsReducer.sort)
 
     useEffect(() => {
-        dispatch(getEpisodes())
+        JSON.stringify(episodesState) === JSON.stringify([]) && dispatch(getEpisodes())
     }, [])
 
     return (
