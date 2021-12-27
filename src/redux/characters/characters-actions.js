@@ -3,7 +3,7 @@ import Api from "../../utilis/Api";
 export const getAllCharacters = (count) => async dispatch => {
     try {
 
-        const res = await Api.get(`/characters?limit=${count}&offset=count`)
+        const res = await Api.get(`/characters?category=Breaking+Bad&limit=${count}&offset=count`)
 
         dispatch({
             type: 'GET_ALL_CHARACTERS',
@@ -32,4 +32,16 @@ export const getCharactersById = (name) => async dispatch => {
         console.log(e);
     }
 }
+export const deleteCharacter = () => dispatch => {
 
+    dispatch({
+        type: 'DELETE_CHARACTER'
+    })
+}
+export const updateCount = (count) => dispatch => {
+
+    dispatch({
+        type: 'UPDATE_COUNT',
+        payload: count
+    })
+}

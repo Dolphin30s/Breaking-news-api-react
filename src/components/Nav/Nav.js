@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 import './nav.css'
 
 const MyNav = () => {
-
     const [homeWeight, setHomeWeight] = useState('bold')
     const [characterWeight, setCharacterWeight] = useState()
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { MDBCard, MDBCol, MDBRow } from 'mdbreact'
+import { MDBCard, MDBCol } from 'mdbreact'
 import { useParams, useLocation } from "react-router-dom";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
@@ -7,6 +7,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useSelector, useDispatch } from 'react-redux'
 import { getCharactersById } from '../../redux/characters/characters-actions'
 import { getQuotesByName } from '../../redux/quotes/quotes-actions';
+
 //components
 import Spinner from '../../components/Spinner/Spinner';
 
@@ -15,7 +16,7 @@ import './character.css'
 
 const Character = () => {
     const dispatch = useDispatch()
-    let { characterName, portrayedName } = useParams();
+    let { characterName } = useParams();
     let characterState = useSelector((state) => state.charactersReducer.character)
     let quotesState = useSelector((state) => state.quotesReducer.quotes)
     const [display, setDisplay] = useState([])
@@ -28,24 +29,20 @@ const Character = () => {
     }, [characterName])
 
     useEffect(() => {
+
         if (quotesState.length > 0) {
             let displayForIcons = []
             for (let index = 0; index < quotesState.length; index++) {
                 displayForIcons.push('none')
             }
             setDisplay(displayForIcons)
-
         }
 
     }, [quotesState])
 
     const updateDisplay = (index) => {
-        console.log(index)
-
         let displayForIcons = display.map((d, i) => i === index ? 'block' : 'none')
-
         setDisplay(displayForIcons)
-        console.log('displayForIcons', displayForIcons)
     }
 
     return (
@@ -53,59 +50,58 @@ const Character = () => {
             <MDBCard className='col-sm-12 cardOfCharacters'>
                 {
                     characterState !== undefined ?
+                        characterState === null ? <Spinner />
+                            : characterState.length === 0 ?
+                                <h1>No results founded</h1>
 
-                        characterState.length === 0 ?
-                            <h1>No results founded</h1>
+                                : characterState.map(character => {
+                                    return (
+                                        <div key={character.name} className='col-sm-12 row rowOfCcharacter animated fadeIn'>
+                                            <img className='col-lg-6 col-sm-12' src={character.img} alt='character' />
 
-                            : characterState.map(character => {
-                                return (
-                                    <div key={character.name} className='col-sm-12 row rowOfCcharacter animated fadeIn'>
-                                        <img className='col-lg-6 col-sm-12' src={character.img} alt='character' />
+                                            <div className='col-lg-6 col-sm-12'>
+                                                <h1 className='attribute'>{character.name}</h1>
 
-                                        <div className='col-lg-6 col-sm-12'>
-                                            <h1 className='attribute'>{character.name}</h1>
+                                                {character.birthday != 'Unknown' && <p> <span className='attribute'>Birth day:</span>
+                                                    {new Date(character.birthday).toLocaleDateString('he-IL', { timeZone: 'Asia/Jerusalem' }).replace(/\D/g, '/')}
+                                                </p>}
 
-                                            {character.birthday != 'Unknown' && <p> <span className='attribute'>Birth day:</span>
-                                                {new Date(character.birthday).toLocaleDateString('he-IL', { timeZone: 'Asia/Jerusalem' }).replace(/\D/g, '/')}
-                                            </p>}
+                                                {character.nickname != 'Unknown' && <p><span className='attribute'>Nick name:</span> {character.nickname}</p>}
+                                                {character.status != 'Unknown' && <p><span className='attribute'>Status: </span>{character.status}</p>}
 
-                                            {character.nickname != 'Unknown' && <p><span className='attribute'>Nick name:</span> {character.nickname}</p>}
-                                            {character.status != 'Unknown' && <p><span className='attribute'>Status: </span>{character.status}</p>}
+                                                {
+                                                    character.occupation.length > 0 ?
+                                                        character.occupation.map((occ, i) =>
+                                                            i != character.occupation.length - 1 ?
+                                                                <React.Fragment key={i}>
+                                                                    {i == 0 && <p className='font-weight-bold'>Occupation:</p>}
+                                                                    <span>{occ},</span>
+                                                                </React.Fragment>
+                                                                : <span>{occ}</span>
+                                                        )
+                                                        : ''
+                                                }
 
-                                            {
-                                                character.occupation.length > 0 ?
-                                                    character.occupation.map((occ, i) =>
-                                                        i != character.occupation.length - 1 ?
-                                                            <React.Fragment key={i}>
-                                                                {i == 0 && <p className='font-weight-bold'>Occupation:</p>}
-                                                                <span>{occ},</span>
-                                                            </React.Fragment>
-                                                            : <span>{occ}</span>
-                                                    )
-                                                    : ''
-                                            }
+                                                {state != undefined &&
+                                                    <div className='portrait'>
+                                                        <br />  <br />
+                                                        {/* <hr /> */}
+                                                        <h2
+                                                            title={`https://www.google.com/search?q=${state.portrayedName.replace(/\s/g, '+')}`}
+                                                            onClick={() => window.open(`https://www.google.com/search?q=${state.portrayedName.replace(/\s/g, '+')}`)}
+                                                            className='portrayed'
+                                                        >
+                                                            <span className='attribute'>Portrait: </span>
+                                                            {state.portrayedName}
+                                                        </h2>
+                                                    </div>
 
-                                            {state != undefined &&
-                                                <div className='portrait'>
-                                                    <br />  <br />
-                                                    {/* <hr /> */}
-                                                    <h2
-                                                        title={`https://www.google.com/search?q=${state.portrayedName.replace(/\s/g, '+')}`}
-                                                        onClick={() => window.open(`https://www.google.com/search?q=${state.portrayedName.replace(/\s/g, '+')}`)}
-                                                        className='portrayed'
-                                                    >
-                                                        <span className='attribute'>Portrait: </span>
-                                                        {state.portrayedName}
-                                                    </h2>
-                                                </div>
+                                                }
 
-                                            }
-
+                                            </div>
                                         </div>
-
-                                    </div>
-                                )
-                            })
+                                    )
+                                })
                         : <Spinner />
                 }
                 <MDBCol sm='12' className='QuotesColumn'>

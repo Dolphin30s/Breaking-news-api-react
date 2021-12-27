@@ -1,18 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './footer.css'
 
 const Footer = () => {
-    const [display, setDisplay] = useState('none')
-
-    useEffect(() => {
-        setInterval(() => {
-            setDisplay('block')
-        }, 1000);
-        return () => clearInterval();
-    }, []);
-
     return (
-        <div className="footer" style={{ display }}>
+        <div className="footer">
             <p>This site created by <a className='text-white' target='_blank'
                 rel="noopener noreferrer"
                 title='https://github.com/asaf6024'

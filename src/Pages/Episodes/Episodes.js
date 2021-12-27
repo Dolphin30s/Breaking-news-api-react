@@ -1,5 +1,5 @@
 
-import React, { useEffect, useCallback } from 'react'
+import React, { useEffect } from 'react'
 import { MDBRow, MDBCard, MDBCol } from 'mdbreact'
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { getEpisodes } from '../../redux/episodes/episodes-actions';
 import { updateSearch, updateSeason, updateSort } from '../../redux/Inputs/Inputs-actions';
+
 //components
 import Spinner from '../../components/Spinner/Spinner';
 
@@ -82,9 +83,8 @@ const Episodes = () => {
                                     new Date(b.air_date) - new Date(a.air_date)
                                     : new Date(a.air_date) - new Date(b.air_date)
                             })
-
                             .map((episode, index) => {
-                                return episode.series === 'Breaking Bad' && <MDBCol key={episode.episode_id} sm='12' md='6' lg='3' >
+                                return <MDBCol key={episode.episode_id} sm='12' md='6' lg='3'>
 
                                     <MDBCard className='cardOfEisode' onClick={() => navigate(`episode/${episode.episode_id}`)}>
 

@@ -1,4 +1,3 @@
-import './episode.css'
 import { MDBCard, MDBRow } from 'mdbreact'
 import React, { useEffect } from 'react'
 import { Link, useParams } from "react-router-dom";
@@ -6,7 +5,8 @@ import { Link, useParams } from "react-router-dom";
 //Redux
 import { useSelector, useDispatch } from 'react-redux'
 import { getEpisodeById } from '../../redux/episodes/episodes-actions';
-
+import { deleteCharacter } from '../../redux/characters/characters-actions';
+//components
 import Spinner from '../../components/Spinner/Spinner';
 
 //css
@@ -19,6 +19,7 @@ const Episode = () => {
 
     useEffect(() => {
         dispatch((getEpisodeById(episodeId)))
+        dispatch(deleteCharacter())
     }, [])
 
     return (

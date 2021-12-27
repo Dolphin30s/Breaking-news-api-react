@@ -3,7 +3,7 @@ import Api from "../../utilis/Api";
 export const getEpisodes = () => async dispatch => {
     try {
 
-        const res = await Api.get(`episodes`)
+        const res = await Api.get(`episodes?series=Breaking+Bad`)
 
         dispatch({
             type: 'GET_EPISODES',

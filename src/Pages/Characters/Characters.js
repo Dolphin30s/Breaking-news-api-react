@@ -3,7 +3,7 @@ import { MDBCard, MDBCol, MDBRow } from 'mdbreact'
 import { Link, useNavigate } from "react-router-dom";
 //Redux
 import { useSelector, useDispatch } from 'react-redux'
-import { getAllCharacters } from '../../redux/characters/characters-actions'
+import { getAllCharacters, deleteCharacter, updateCount } from '../../redux/characters/characters-actions'
 
 //components
 import Spinner from '../../components/Spinner/Spinner';
@@ -15,12 +15,13 @@ const Characters = () => {
     const dispatch = useDispatch()
     let navigate = useNavigate()
     let charactersState = useSelector((state) => state.charactersReducer.characters)
-    const [count, setCount] = useState(12)
-
+    let countState = useSelector((state) => state.charactersReducer.count)
+    // const [count, setCount] = useState(12)
 
     useEffect(() => {
-        dispatch((getAllCharacters(count)))
-    }, [count])
+        dispatch((getAllCharacters(countState)))
+        dispatch(deleteCharacter())
+    }, [countState])
 
     return (
         <div className='container charactersContainer'>
@@ -96,11 +97,14 @@ const Characters = () => {
                                     </MDBCol>
                                     <div className='loadBtnDiv' >
                                         {
-                                            count !== 84 && charactersState.length - 1 === i &&
+                                            countState !== 72 && charactersState.length - 1 === i &&
                                             charactersState !== undefined &&
                                             //  charactersState.length > 0 &&
                                             <input type='button' className='btn col-sm-12 loadBtn' value={'Load more...'}
-                                                onClick={() => setCount(prevState => prevState + 12)}
+                                                onClick={() =>
+                                                    dispatch(updateCount(12))
+                                                    // setCount(prevState => prevState + 12)
+                                                }
                                             />
                                         }
                                     </div>
