@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 //Redux
 import { useSelector, useDispatch } from 'react-redux'
-import { getEpisodes } from '../../redux/episodes/episodes-actions';
+import { getEpisodes, deleteEpiside } from '../../redux/episodes/episodes-actions';
 import { updateSearch, updateSeason, updateSort } from '../../redux/Inputs/Inputs-actions';
 
 //components
@@ -24,6 +24,8 @@ const Episodes = () => {
 
     useEffect(() => {
         JSON.stringify(episodesState) === JSON.stringify([]) && dispatch(getEpisodes())
+
+        dispatch(deleteEpiside())
     }, [])
 
     return (

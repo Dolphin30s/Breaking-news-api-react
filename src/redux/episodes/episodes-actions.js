@@ -31,4 +31,10 @@ export const getEpisodeById = (id) => async dispatch => {
         console.log(e);
     }
 }
+export const deleteEpiside = () => dispatch => {
+
+    dispatch({
+        type: 'DELETE_EPISODE'
+    })
+}
 

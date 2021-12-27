@@ -13,6 +13,9 @@ export default function episodesReducer(state = initialState, action) {
         case "GET_EPISODE_BY_ID":
             return { ...state, episode: action.payload };
 
+        case "DELETE_EPISODE":
+            return { ...state, episode: [] };
+
         default:
             return state;
     }

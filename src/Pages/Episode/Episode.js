@@ -18,7 +18,15 @@ const Episode = () => {
     let episodeState = useSelector((state) => state.episodesReducer.episode)
 
     useEffect(() => {
-        dispatch((getEpisodeById(episodeId)))
+
+        let isCurrentEpisode = false
+        if (episodeState !== undefined && episodeState.some(episode => episode.episode_id == episodeId))
+            isCurrentEpisode = true
+
+        //re API request when episode has changed
+        if (!isCurrentEpisode)
+            dispatch((getEpisodeById(episodeId)))
+
         dispatch(deleteCharacter())
     }, [])
 
@@ -28,36 +36,37 @@ const Episode = () => {
                 <MDBCard className='col-sm-12 cardOfEpisode animated fadeIn'>
                     {
                         episodeState != undefined ?
-                            episodeState.map(episode => {
-                                return (
-                                    <div key={episode.title}>
-                                        <div className='seasonHeader'>
-                                            <p>Episode: {episode.episode}</p>
-                                        </div>
-                                        <h1>{episode.title}</h1>
-                                        <br />
-                                        {/* <p>{episode.air_date}</p> */}
-                                        <p>{new Date(episode.air_date).toLocaleDateString('he-IL', { timeZone: 'Asia/Jerusalem' }).replace(/\D/g, '/')}</p>
+                            JSON.stringify(episodeState) === JSON.stringify([]) ? <Spinner />
+                                : episodeState.map(episode => {
+                                    return (
+                                        <div key={episode.title}>
+                                            <div className='seasonHeader'>
+                                                <p>Episode: {episode.episode}</p>
+                                            </div>
+                                            <h1>{episode.title}</h1>
+                                            <br />
+                                            {/* <p>{episode.air_date}</p> */}
+                                            <p>{new Date(episode.air_date).toLocaleDateString('he-IL', { timeZone: 'Asia/Jerusalem' }).replace(/\D/g, '/')}</p>
 
-                                        {
-                                            episode.characters.length > 0 ?
-                                                episode.characters.map((character, i) =>
-                                                    i != episode.characters.length - 1 ?
-                                                        <React.Fragment key={character}>
-                                                            <Link to={`/character/${character.replace(/\s/g, '+')}`}>{character}</Link>
-                                                            <span>,</span>
-                                                            {(i + 1) % 3 == 0 && <br />}
-                                                        </React.Fragment>
-                                                        : <Link to={`/character/${character.replace(/\s/g, '+')}`}>{character}</Link>
-                                                )
-                                                : ''
-                                        }
-                                        <div className='seasonFooter'>
-                                            <p>Season: {episode.season}</p>
+                                            {
+                                                episode.characters.length > 0 ?
+                                                    episode.characters.map((character, i) =>
+                                                        i != episode.characters.length - 1 ?
+                                                            <React.Fragment key={character}>
+                                                                <Link to={`/character/${character.replace(/\s/g, '+')}`}>{character}</Link>
+                                                                <span>,</span>
+                                                                {(i + 1) % 3 == 0 && <br />}
+                                                            </React.Fragment>
+                                                            : <Link to={`/character/${character.replace(/\s/g, '+')}`}>{character}</Link>
+                                                    )
+                                                    : ''
+                                            }
+                                            <div className='seasonFooter'>
+                                                <p>Season: {episode.season}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                )
-                            })
+                                    )
+                                })
                             : <Spinner />
                     }
                 </MDBCard>
