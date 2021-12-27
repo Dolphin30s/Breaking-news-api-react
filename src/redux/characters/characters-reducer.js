@@ -7,7 +7,6 @@ const initialState = {
 };
 
 export default function charactersReducer(state = initialState, action) {
-    console.log('state.count ', state.count)
 
     switch (action.type) {
         case "GET_ALL_CHARACTERS":
