@@ -56,10 +56,14 @@
   margin: 0 0 10px 0;
   border-radius: 10px;
 }
+.charactersContainer .loadBtnDiv {
+  margin: auto;
+}
 .charactersContainer .loadBtn {
   background: rgb(54, 32, 32);
   margin: 10px auto;
   color: #fff;
+  text-align: center;
 }
 .charactersContainer .loadBtn:hover {
   color: #fff;
